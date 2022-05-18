@@ -7,7 +7,7 @@ export const ShowHero = () => {
     const { Heroe, superHeroes } = useSelector(state => state);
     const dispatch = useDispatch();
 
-    
+
 
 
     return (
@@ -18,16 +18,16 @@ export const ShowHero = () => {
                 {
                     superHeroes?.map(e => {
                         return (
-                            <option 
-                            key={e._id.$oid} 
-                            value={e._id.$oid}
+                            <option
+                                key={e._id.$oid}
+                                value={e._id.$oid}
                             >{e.nombre_heroe}</option>
                         )
                     })
                 }
             </select>
             <div>
-              <h3>{Heroe.nombre_heroe}</h3>
+                <h3>{Heroe.nombre_heroe}</h3>
             </div>
 
         </div>

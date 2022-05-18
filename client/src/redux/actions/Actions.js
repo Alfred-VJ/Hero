@@ -128,10 +128,14 @@ export const getSalvados = (idHeroe) => {
 
 // //----------POST----------------
 
-export const createAuths = (info) => {
+export const createAuths = (username, password, email) => {
     return async (dispatch) => {
         try {
-            const user = await axios.post(`http://localhost:5000/api/auths`, info)
+            const user = await axios.post(`http://localhost:5000/api/auths`, {
+                username,
+                password,
+                email
+            })
 
             return dispatch({
                 type: CREATE_AUTHS,
@@ -145,7 +149,7 @@ export const createAuths = (info) => {
 export const createPoderes = (poder) => {
     return async (dispatch) => {
         try {
-            const infoPoder = await axios.post(`http://localhost:5000/api/poderes`, poder)
+            const infoPoder = await axios.post(`http://localhost:5000/api/poderes`, { poder })
 
             return dispatch({
                 type: CREATE_PODERES,
@@ -159,7 +163,7 @@ export const createPoderes = (poder) => {
 export const createHeroes = (data) => {
     return async (dispatch) => {
         try {
-            const heroe = await axios.post(`http://localhost:5000/api/superheroes`, data)
+            const heroe = await axios.post(`http://localhost:5000/api/superheroes`, { data })
 
             return dispatch({
                 type: CREATE_HEROES,
@@ -173,7 +177,7 @@ export const createHeroes = (data) => {
 export const createSalvados = (idHeroe, data) => {
     return async (dispatch) => {
         try {
-            const salvado = await axios.post(`http://localhost:5000/api/superheroes/${idHeroe}/salvados`, data)
+            const salvado = await axios.post(`http://localhost:5000/api/superheroes/${idHeroe}/salvados`, { data })
 
             return dispatch({
                 type: CREATE_SALVADOS,
@@ -187,111 +191,111 @@ export const createSalvados = (idHeroe, data) => {
 
 export const updateAuths = (id, data) => {
     return async (dispatch) => {
-        try{
-            const user = await axios.put(`http://localhost:5000/api/auths/${id}`, data)
+        try {
+            const user = await axios.put(`http://localhost:5000/api/auths/${id}`, { data })
 
             return dispatch({
                 type: UPDATE_AUTHS,
                 payload: user.data
             })
-        }catch(error){return 'Error al modificar el usuario'}
+        } catch (error) { return 'Error al modificar el usuario' }
     }
- }
+}
 
 
 export const updatePoderes = (id, data) => {
     return async (dispatch) => {
-        try{
-            const poder = await axios.put(`http://localhost:5000/api/poderes/${id}`, data)
+        try {
+            const poder = await axios.put(`http://localhost:5000/api/poderes/${id}`, { data })
 
             return dispatch({
                 type: UPDATE_PODERES,
                 payload: poder.data
             })
-        }catch(error){return 'Error al modificar el poder'}
+        } catch (error) { return 'Error al modificar el poder' }
     }
- }
+}
 
 
 export const updateHeroes = (id, data) => {
     return async (dispatch) => {
-        try{
-            const heroe = await axios.put(`http://localhost:5000/api/superheroes/${id}`, data)
+        try {
+            const heroe = await axios.put(`http://localhost:5000/api/superheroes/${id}`, { data })
 
             return dispatch({
                 type: UPDATE_HEROES,
                 payload: heroe.data
             })
-        }catch(error){return 'Error al modificar el Heroe'}
+        } catch (error) { return 'Error al modificar el Heroe' }
     }
- }
+}
 
 
 export const updateSalvados = (idHeroe, idSalvado, data) => {
     return async (dispatch) => {
-        try{
-            const salvado = await axios.put(`http://localhost:5000/api/superheroes/${idHeroe}/salvados/${idSalvado}`, data)
+        try {
+            const salvado = await axios.put(`http://localhost:5000/api/superheroes/${idHeroe}/salvados/${idSalvado}`, { data })
 
             return dispatch({
                 type: UPDATE_SALVADOS,
                 payload: salvado.data
             })
-        }catch(error){return 'Error al modificar a la persona salvada'}
+        } catch (error) { return 'Error al modificar a la persona salvada' }
     }
- }
+}
 
 // //----------DELETE----------------
 
 export const deleteAuths = (id) => {
     return async (dispatch) => {
-        try{
+        try {
             const user = await axios.delete(`http://localhost:5000/api/auths/${id}`)
 
             return dispatch({
                 type: DELETE_AUTHS,
                 payload: user.data
             })
-        }catch(error){return 'Error al eliminar el usuario'}
+        } catch (error) { return 'Error al eliminar el usuario' }
     }
- }
+}
 
 
 export const deletePoderes = (id) => {
     return async (dispatch) => {
-        try{
-             await axios.delete(`http://localhost:5000/api/poderes/${id}`)
+        try {
+            await axios.delete(`http://localhost:5000/api/poderes/${id}`)
 
             return dispatch({
                 type: DELETE_PODERES,
             })
-        }catch(error){return 'Error al eliminar el poder'}
+        } catch (error) { return 'Error al eliminar el poder' }
     }
- }
+}
 
 
 export const deleteHeroes = (id) => {
     return async (dispatch) => {
-        try{
+        try {
             const heroe = await axios.delete(`http://localhost:5000/api/superheroes/${id}`)
 
             return dispatch({
                 type: DELETE_HEROES,
                 payload: heroe.data
             })
-        }catch(error){return 'Error al eliminar al Heroe'}
+        } catch (error) { return 'Error al eliminar al Heroe' }
     }
- }
+}
 
 
 export const deleteSalvados = (idHeroe, idSalvado) => {
     return async (dispatch) => {
-        try{
+        try {
             const salvado = await axios.delete(`http://localhost:5000/api/superheroes/${idHeroe}/salvados/${idSalvado}`)
 
             return dispatch({
                 type: DELETE_SALVADOS,
                 payload: salvado.data
             })
-        }catch(error){return 'Error al aliminar a la persona salvada'}
+        } catch (error) { return 'Error al aliminar a la persona salvada' }
     }
- }
+}

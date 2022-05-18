@@ -5,7 +5,7 @@ import { getHeroes } from '../../redux/actions/Actions.js'
 
 
 export const ShowHeroes = () => {
-    const {superHeroes} = useSelector(state => state)
+    const { superHeroes } = useSelector(state => state)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export const ShowHeroes = () => {
             <h1>Heroes</h1>
             {
                 superHeroes?.map(e => {
-                    return(
+                    return (
                         <h1 key={e._id.$oid}>{e.nombre_heroe}</h1>
                     )
                 })

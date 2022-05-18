@@ -1,18 +1,26 @@
 
 import './App.css';
+import Login from './Components/Login/Login.jsx';
 import { ShowHero } from './Components/ShowHeroe/ShowHero';
 import { ShowHeroes } from './Components/ShowHeroes/ShowHeroes.jsx';
+import { Route, Routes } from 'react-router-dom'
+import Usuarios from './Components/Usuarios/Usuarios.jsx';
+
+
 
 
 function App() {
-  // useEffect(() => {
-  //   axios('http://localhost:5000/api/superheroes')
-  //   .then(res => console.log(res.data))
-  // }, [])
+
   return (
     <div className="App">
-    <ShowHeroes />
-    <ShowHero />
+   
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/auths' element={<Usuarios />}/>
+        <Route path='/superheroes' element={<ShowHeroes />} />
+        <Route path='/superheroes/:id' element={<ShowHero />} />
+
+      </Routes>
     </div>
   );
 }
